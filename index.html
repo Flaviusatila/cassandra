@@ -16,10 +16,208 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+						<!-- <section>Flavius Atila Gama Carvalho Ferreira</section>
+						<section>Cassandra No My Sql</section> -->
+			<section data-auto-animate data-auto-animate-unmatched="fade">
+				<h2>Guild Java</h2>	
+				<h5>Flavius Atila Gama Carvalho Ferreira</h5>
+			</section>
+			<section data-auto-animate data-auto-animate-unmatched="fade">
+					<h4>Manipulação de dados</h4>
+					<p>Cassandra DB (NoSql)</p>
+					<img src="examples/assets/1_xlRpJixAInrMlIhn5KINgA.jpeg" style="height: 250px;">
+			</section>		
+			<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+				<script type="text/template">
+					## Pré Requisito
+					<ul>
+						<li>
+							Java 8 instalado e configurado na maquina.
+						</li>
+					</ul>
+
+					--
+					
+					## Instalando JDK
+					<a href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">Link download JDK 8 </a>
+					<img src="examples/assets/Jdk/java-jdk-8-download-windows-x64-version.png" style="height: 250px;">
+
+					--
+
+					<img src="examples/assets/Jdk/start-jdk-8-installation-windows.png" style="height: 250px;">
+
+					--
+
+					<img src="examples/assets/Jdk/java-8-windows-jdk-cassandra.png" alt="">
+
+					--
+
+					<img src="examples/assets/Jdk/java-jdk-8-successful-install-windows-cassandra.png" alt="">
+
+					--
+
+					<img src="examples/assets/Jdk/this-pc-properties-install-java-8-cassandra-windows.png" alt="">
+
+					--
+
+					<img src="examples/assets/Jdk/advanced-system-settings-java-8-cassandra.png" alt="">
+
+					--
+
+					<img src="examples/assets/Jdk/system-properties-enviormnet-variables-java-cassandra-windows.png" alt="" style="height: 500px;">
+
+					--
+
+					<img src="examples/assets/Jdk/add-new-system-variable-windows-java-cassandra.png" alt="" style="height: 500px;">
+
+					--
+
+					<img src="examples/assets/Jdk/browse-for-java-8-folder-add-envirnment-variable.png" alt="" style="height: 650px;">
+					
+					--
+
+					<img src="examples/assets/Jdk/new-enviornment-variable-added-java-8-windows.png" alt="">
+
+					--
+
+					<img src="examples/assets/Jdk/java-home-variable-system-variable-added-windows.png" alt="" style="height: 650px;">
+
+				</script>
+			</section>
+			<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+				<script type="text/template">
+					## Pré Requisito
+					<ul>
+						<li>
+							Python 2.7 instalado e configurado na maquina
+						</li>
+					</ul>
+
+					--
+					
+					## Instalando Python 2.7
+					<a href="https://www.python.org/downloads/release/python-2718/">Link download Python 2.7 </a> <br>
+					<img src="examples/assets/Python/select-python-windows-x64-version-executable.png">
+
+					--
+
+					<img src="examples/assets/Python/python-2.7-installation-windows-cassandra.png">
+
+					--
+
+					<img src="examples/assets/Python/select-python-installation-directory-windows.png" alt="">
+
+					--
+
+					<img src="examples/assets/Python/select-python-installation-options-windows.png" alt="">
+
+					--
+
+					<img src="examples/assets/Python/python-2.7-finish-installation-windows.png" alt="">
+
+					--
+
+					<img src="examples/assets/Python/this-pc-properties-install-java-8-cassandra-windows.png" alt="">
+
+					--
+
+					<img src="examples/assets/Python/advanced-system-settings-java-8-cassandra.png" alt="">
+
+					--
+
+					<img src="examples/assets/Python/edit-path-variable-python-2.7.png" alt="" style="height: 500px;">
+
+					--
+
+					<img src="examples/assets/Python/add-new-python-2.7-variable-path-windows.png" alt="" style="height: 650px;">
+					
+					--
+
+					<img src="examples/assets/Python/add-python-2.7-variable-path-enviornment.png" alt="" style="height: 650px;">
+
+				</script>
+			</section>
+			<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+				<script type="text/template">
+					## Verificando Versões
+					<p></p>
+					- JDK
+						<pre data-id="code"><code class="hljs" data-trim>
+							java -version
+						</code></pre>
+					- Python
+						<pre data-id="code"><code class="hljs" data-trim>
+							python ––version
+						</code></pre>
+
+					--
+					
+					## Instalando Cassandra
+					<a href="https://cassandra.apache.org/download/">Link download Cassandra </a> <br>
+					<img src="examples/assets/Cassandra/download-latest-cassandra-version-windows.png">
+
+					--
+
+					<img src="examples/assets/Cassandra/apache-download-mirror-link-windows.png">
+
+					--
+
+					<img src="examples/assets/Cassandra/content-of-untarred-cassandra-windows-folder.png" alt="">
+
+					--
+
+					<img src="examples/assets/Cassandra/this-pc-properties-install-java-8-cassandra-windows.png" alt="">
+
+					--
+
+					<img src="examples/assets/Cassandra/advanced-system-settings-java-8-cassandra.png" alt="">
+
+					--
+
+					<img src="examples/assets/Cassandra/system-properties-enviormnet-variables-java-cassandra-windows.png" alt="" style="height: 650px;">
+
+					--
+
+					<img src="examples/assets/Cassandra/add-new-system-variable-windows-java-cassandra.png" alt="" style="height: 650px;">
+
+					--
+
+					<img src="examples/assets/Cassandra/cassandra-add-enviornment-variable-windows.png" alt="" style="height: 500px;">
+
+					--
+
+					<img src="examples/assets/Cassandra/edit-path-variable-python-2.7.png" alt="" style="height: 650px;">
+					
+					--
+
+					<img src="examples/assets/Cassandra/add-cassandra-bin-folder-path-system-variable.png" alt="" style="height: 650px;">
+
+					--
+					
+					- Abra o cmd e navege até a pasta onde está as pasta bin do cassandra.
+					- Digite o comandor:
+					<code><pre>cassandra</pre></code>
+					<img src="examples/assets/Cassandra/start-cassandra-windows-command-prompt.png" alt="" style="height: 200px; width:700px">
+					- O banco de dados esta rodando se aparece a mensagem
+					<code><pre>Starting Cassandra Server</pre></code>
+					
+					--
+
+					- Abra outro cmd e navege até a pasta onde está as pasta bin do cassandra.
+					- Digite o comandor:
+					<code><pre>cqlsh</pre></code>
+					<img src="examples/assets/Cassandra/cqlsh-shell-cassandra-cmd-windows-access.png" alt="">
+					
+					--
+
+					Comandos NoSql na Cassandra estão habilitados no cmd.
+
+				</script>
+			</section>
+	</div>
+</div>
+
+	
 
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
