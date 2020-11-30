@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="dist/theme/night.css" id="theme">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
@@ -82,10 +82,8 @@
 
 					<img src="examples/assets/Jdk/java-home-variable-system-variable-added-windows.png" alt="" style="height: 650px;">
 
-				</script>
-			</section>
-			<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
-				<script type="text/template">
+					---
+
 					## Pré Requisito
 					<ul>
 						<li>
@@ -135,12 +133,10 @@
 
 					<img src="examples/assets/Python/add-python-2.7-variable-path-enviornment.png" alt="" style="height: 650px;">
 
-				</script>
-			</section>
-			<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
-				<script type="text/template">
-					## Verificando Versões
-					<p></p>
+					---
+
+					## Instalando Cassandra
+					<h5>Verificando Versões</h5>
 					- JDK
 						<pre data-id="code"><code class="hljs" data-trim>
 							java -version
@@ -151,8 +147,7 @@
 						</code></pre>
 
 					--
-					
-					## Instalando Cassandra
+
 					<a href="https://cassandra.apache.org/download/">Link download Cassandra </a> <br>
 					<img src="examples/assets/Cassandra/download-latest-cassandra-version-windows.png">
 
@@ -211,6 +206,145 @@
 					--
 
 					Comandos NoSql na Cassandra estão habilitados no cmd.
+
+				</script>
+			</section>
+			<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+				<script type="text/template">
+					## Conceitos
+					<h3>NoSql</h3>
+					<p>NoSQL (originalmente se referindo a "no SQL": "não SQL" ou "não relacional",posteriormente estendido para Not Only SQL - Não Somente SQL) é um termo genérico que representa os bancos de dados não relacionais. </p>
+					
+					--
+
+					<p> É uma classe definida de banco de dados que fornecem um mecanismo para armazenamento e recuperação de dados que são modelados de formas diferentes das relações tabulares usadas nos bancos de dados relacionais.</p>
+
+					--
+
+					<h3>Apache Cassandra</h3>
+					<h5>Historia</h5>
+					<p>Apache Cassandra é um projeto de sistema de banco de dados distribuído altamente escalável de segunda geração, que reúne a arquitetura do DynamoDB, da Amazon Web Services e modelo de dados baseado no BigTable, do Google.</p>
+
+					--
+					
+					<p>O Cassandra inicialmente foi criado pelo Facebook, que abriu seu código-fonte para a comunidade em 2008. Agora é mantido por desenvolvedores da fundação Apache e colaboradores de muitas empresas.</p>
+					
+					--
+
+					<h3>Principais Características</h3>
+					<ul>
+						<li><h6>Distribuído</h6>
+							<p>Cada nó no cluster tem a mesma função. Não há um ponto único de falha. Os dados são distribuídos pelo cluster (para que cada nó contenha dados diferentes), mas não há mestre, pois cada nó pode atender a qualquer solicitação.</p>
+						</li>
+					</ul>
+
+					--
+					
+					<ul>
+						<li><h6>Escalabilidade</h6>
+							<p>Projetado para ter taxa de transferência de leitura e gravação, aumenta linearmente à medida que novas máquinas são adicionadas, com o objetivo de não haver tempo de inatividade ou interrupção nos aplicativos.</p>
+						</li>
+					</ul>
+					
+					--
+
+					<ul>
+						<li><h6>Tolerante a falhas</h6>
+							<p>Os dados são replicados automaticamente para vários nós para tolerância a falhas. A replicação em vários data centers é suportada. Nós com falha podem ser substituídos sem tempo de inatividade.</p>
+						</li>
+					</ul>
+
+					--
+					
+					<ul>
+						<li><h6>Consistência ajustável</h6>
+							<p>O Cassandra é tipicamente classificado como um sistema AP, o que significa que a disponibilidade e a tolerância da partição são geralmente consideradas mais importantes que a consistência no Cassandra, gravações e leituras oferecem um nível ajustável de consistência, desde "as gravações nunca falham" até "bloco para que todas as réplicas sejam legíveis", com o nível de quorum no meio.</p>
+						</li>
+					</ul>
+
+					--
+
+					<ul>
+						<li><h6>Suporte do MapReduce</h6>
+							<p>Cassandra possui integração com o Hadoop, com suporte ao MapReduce. Também há suporte para o Apache Pig e o Apache Hive.</p>
+						</li>
+					</ul>
+
+					--
+					
+					<ul>
+						<li><h6>Linguagem de consulta</h6>
+							<p>Cassandra introduziu a Cassandra Query Language (CQL). O CQL é uma interface simples para acessar o Cassandra, como uma alternativa à tradicional SQL (Structured Query Language).</p>
+						</li>
+					</ul>
+					
+					--
+
+					<ul>
+						<li><h6>Consistência Eventual</h6>
+							<p>Cassandra gerencia consistência eventual de leituras, upserts e exclusões através de Tombstones.</p>
+						</li>
+					</ul>
+
+					--
+					
+					<h5>Modelo de dados</h5>
+					<p>Cassandra é um amplo armazenamento de colunas e, como tal, essencialmente um híbrido entre um valor-chave e um sistema de gerenciamento de banco de dados tabular.</p>
+					<p> Seu modelo de dados é um armazenamento de linha particionado com consistência ajustável.</p>
+
+					--
+					
+					<ul>
+						<li>Linhas são organizadas em tabelas; </li>
+						<li>O primeiro componente da chave primária de uma tabela é a chave de partição; </li>
+						<li>Dentro de uma partição, as linhas são agrupadas pelas colunas restantes da chave.</li>
+						<!-- <li>Outras colunas podem ser indexadas separadamente da chave primária.</li>
+						<li>As tabelas podem ser criadas, descartadas e alteradas em tempo de execução sem bloquear atualizações e consultas.</li>
+						<li>Cassandra não pode fazer junções ou subconsultas,Cassandra enfatiza a desnormalização por meio de recursos como coleções.</li> -->
+					</ul>
+
+					--
+					
+					<ul>
+						<!-- <li>Linhas são organizadas em tabelas; </li>
+						<li>O primeiro componente da chave primária de uma tabela é a chave de partição; </li>
+						<li>Dentro de uma partição, as linhas são agrupadas pelas colunas restantes da chave.</li> -->
+						<li>Outras colunas podem ser indexadas separadamente da chave primária.</li>
+						<li>As tabelas podem ser criadas, descartadas e alteradas em tempo de execução sem bloquear atualizações e consultas.</li>
+						<li>Cassandra não pode fazer junções ou subconsultas,Cassandra enfatiza a desnormalização por meio de recursos como coleções.</li>
+					</ul>
+					
+					--
+
+					<img src="examples/assets/diversos/no_cassandra.png" alt="">
+
+					--
+
+					<h5>Teorema CAP</h5>
+					<p>Teorema do CAP, também chamado de Teorema de Brewer, afirma que é impossível que o armazenamento de dados distribuído forneça simultaneamente mais de duas das três garantias seguintes:</p>
+
+					--
+					
+					<table>
+						<tr>
+							<th>Consistência</th>
+							<th>Disponibilidade (Availability)</th>
+							<th>Partição tolerante a falhas</th>
+							<tr>
+								<td>Cada leitura recebe a escrita mais recente ou um erro</td>
+								<td>Cada pedido recebe uma resposta (sem erro) - sem garantia de que contém a escrita mais recente</td>
+								<td>Continua funcionando apesar de um erro entre a rede entre nós</td>
+							</tr>
+						</tr>
+					</table>
+
+					--
+
+					<img src="examples/assets/diversos/CAP.png" alt="" style="height: 650px;">
+
+					--
+
+					<img src="examples/assets/diversos/cap_bds.png" alt="" style="height: 650px;">
 
 				</script>
 			</section>
