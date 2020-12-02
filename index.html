@@ -206,6 +206,10 @@
 					--
 
 					Comandos NoSql na Cassandra estão habilitados no cmd.
+					
+					---
+
+					## Utilizando o Cassandra Docker.
 
 				</script>
 			</section>
@@ -345,6 +349,117 @@
 					--
 
 					<img src="examples/assets/diversos/cap_bds.png" alt="" style="height: 650px;">
+
+				</script>
+			</section>
+			<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+				<script type="text/template">
+					## Manipulação de Dados
+					<h3>TablePlus</h3>
+					<p>O editor que será utilizado para manipular o banco de dados sera o TablePlus(<a href="https://tableplus.com/download" target = "_blank">download</a>)</p>
+					
+					--
+
+					<p>Primeiro devemos criar o keyspace, onde será armazenado as tabelas.</p>
+					<pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+						CREATE KEYSPACE  "exemplo_keyspace"
+						WITH replication = {'class': 'SimpleStrategy'
+						                    ,'replication_factor': 1};
+					</code></pre>
+
+					--
+
+					
+					<ul>
+						<li><b>class</b>: indica qual o método de replicação será utilizando para distribuir as réplicas das partições, podendo ser:</li>
+						<li><p><b>SimpleStrategy</b>: é o método padrão. Assume que o cluster é composto de um único data center e irá criar um número de réplicas de cada partição das tabelas desse keyspace igual ao valor especificado no parâmetro <b>replication_factor</b></p></li>	
+					</ul>
+
+					--
+					
+					<ul>
+						<li><p><b>NetworkTopologyStrategy</b>: esse método permite que seja definido um fator de replicação para cada data center que faz parte do cluster. Nesse caso, o parâmetro replication_factor não é utilizado, sendo necessário passar um conjunto de chaves e valores em que a chave é o nome do data center e o valor é a quantidade de réplicas para o mesmo.</p></li>
+					</ul>
+
+					--
+
+					<ul>
+						<li><p><b>replication_factor:</b> indica quantos nós do cluster devem conter uma cópia de cada partição das tabelas deste keyspace caso o método de replicação seja o SimpleStrategy.</p></li>
+					</ul>
+
+					--
+					
+					<h3>Criando uma tabela</h3>
+
+					<pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+						CREATE TABLE "exemplo_keyspace"."contacts" (
+						contact_id uuid,
+						first_name text,
+						last_name text,
+						phone_number text,
+						PRIMARY KEY(contact_id)
+						);
+					</code></pre>
+					
+					--
+
+					<h3> Inserindo dados em uma tabela </h3>
+					<pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+						INSERT INTO
+						"exemplo_keyspace"."contacts" (contact_id, first_name, last_name, phone_number)
+						VALUES (uuid(), 'John', 'Doe', '559912341234');
+						INSERT INTO
+						"exemplo_keyspace"."contacts" (contact_id, first_name, last_name)
+						VALUES (uuid(), 'Mary', 'Jane');
+						INSERT INTO
+						"exemplo_keyspace"."contacts" (contact_id, first_name, phone_number)
+						VALUES (uuid(), 'Will', '441239876543');
+					</code></pre>
+					
+					--
+					
+					<h3> Select na tabela </h3>
+					<pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+						SELECT * FROM "exemplo_keyspace"."contacts";
+					</code></pre>
+					
+					--
+
+					<h3>Alterações na Tabela</h3>
+					<h5>Manipulando coluna de Coleções</h5>
+					<pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+					ALTER TABLE exemplo_keyspace.contacts ADD phone_numbers LIST< text >;
+					ALTER TABLE exemplo_keyspace.contacts DROP phone_number;
+					UPDATE exemplo_keyspace.contacts
+					SET phone_numbers = [ '441239876543', '441239876543' ]
+					WHERE contact_id = 910ac22b-538e-42d2-a5cc-7163cdd5a0c3;
+					SELECT phone_numbers FROM "exemplo_keyspace"."contacts"
+					WHERE contact_id = 910ac22b-538e-42d2-a5cc-7163cdd5a0c3;
+					</code></pre>
+
+					--
+
+					<h3> Utilizando TL(Time to Live)</h3>
+					<pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+					INSERT INTO exemplo_keyspace .contacts (contact_id, first_name, last_name)
+					VALUES (uuid(), 'Temporary', 'Temporary') USING TTL 60;
+					</code></pre>					
+
+					---
+					
+					## Referências
+					
+					<ul>
+						<li> <a href="https://phoenixnap.com/kb/install-cassandra-on-windows" target = "_blank">Tutorial de instalação Apache Cassandra</a></li>
+						<li> <a href="https://pt.wikipedia.org/wiki/Apache_Cassandra" target = "_blank">Informações Apache Cassandra</a></li>
+						<li> <a href="https://pt.wikipedia.org/wiki/NoSQL" target = "_blank">Informações NoSQL</a></li>
+						<li> <a href="https://pt.wikipedia.org/wiki/Teorema_CAP" target = "_blank">Teorema CAP</a></li>
+						<li> <a href="https://youtu.be/s1xc1HVsRk0" target = "_blank">Play list de Cassandra Youtube (Inglês)</a></li>
+						<li> <a href="https://revealjs.com/" target = "_blank">Framework da utilizada na apresentação</a></li>
+						<li> <a href="https://docs.datastax.com/en/cql-oss/3.x/cql/cql_reference/cqlCommandsTOC.html" target = "_blank">Lista de Comandos CQLSH</a></li>
+						<li> <a href="https://www.tutorialspoint.com/cassandra/cassandra_cqlsh.htm" target = "_blank">Tutorial CQLSH</a></li>
+						<li> <a href="https://www.devmedia.com.br/introducao-ao-cassandra/38377" target = "_blank">Exemplos de Implementação Apache Cassandra</a></li>
+					</ul>
 
 				</script>
 			</section>
